@@ -1,0 +1,7 @@
+# Playbook: Ping Ungroup Hosts
+---
+# For Ungroup Hosts
+ - hosts: remote@172.31.41.229
+   tasks:
+      - name: Using ping module to ping remote server
+        ping:

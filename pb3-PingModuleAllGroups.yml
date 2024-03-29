@@ -1,0 +1,7 @@
+# Playbook: Ping All Groups
+---
+- name: Ping Module with All Groups in Hosts Inventroy File
+  hosts: all
+  tasks:
+    - name: Pinging All Remote Servers from Control Servers
+      ping:

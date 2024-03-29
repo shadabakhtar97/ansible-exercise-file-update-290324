@@ -1,0 +1,24 @@
+# Playbook: Create Directory
+---
+- name: Create Directory Playbook
+  hosts: all
+  tasks:
+    - name: Create a new directory
+      # The 'file' module is used to perform file-related tasks.
+      file:
+        # Specify the path of the directory to be created.
+        path: /home/remote/remote-dir5
+        # Ensure that the directory exists. If it already exists, Ansible will not make any changes.
+        state: directory
+      # The 'changed_when' directive specifies the condition under which Ansible considers the task to have made a change.
+      changed_when: false
+      # The 'register' directive allows you to store the result of the task in a variable.
+      register: create_directory_result
+
+    # Additional tasks can be added here if needed
+
+    # Print a debug message to indicate whether the directory was created or not.
+    - name: Print directory creation status
+      debug:
+        # Check the 'changed' attribute of the register variable to determine if the directory was created.
+        msg: "Directory {{ create_directory_result.path }} was {% if create_directory_result.changed %}created{% else %}not created{% endif %}."

@@ -1,0 +1,7 @@
+# Playbook: Ping Specific Group
+---
+# Webservers Group Hosts
+- hosts: webservers
+  tasks:
+      - name: Using ping module to ping remote server
+        ping:
