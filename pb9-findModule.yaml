@@ -1,0 +1,31 @@
+# Playbook: Test reachability and find module
+
+# Define the playbook, which tests reachability and searches for files in a specific path on all hosts
+---
+- name: "Test reachability and find module"
+
+  # Specify the target hosts where tasks will be executed
+  hosts: all
+
+  # Define the tasks to be executed on the specified hosts
+  tasks:
+    # Task name: "Test Reachability"
+    - name: "Test Reachability"
+
+      # Use the 'ping' module to test reachability to the hosts
+      ping:
+
+    # Task name: "Find Module"
+    - name: "Find Module"
+
+      # Use the 'find' module to search for files in the specified path
+      find:
+        # Specify the path where files will be searched for
+        path: /home/remote/
+        # Specify the type of files to search for (file)
+        file_type: file
+      register: results
+    - name: check output
+      debug:
+       var: results
+

@@ -1,0 +1,23 @@
+# Playbook: Creating new users
+
+# Define the playbook, which creates a new user on a specific remote host
+---
+- name: New User is Created
+
+  # Specify the target hosts where the user will be created
+  hosts: webservers
+
+  # Enable privilege escalation to execute tasks with elevated privileges (e.g., sudo)
+  become: true
+
+  # Define the tasks to be executed on the specified hosts
+  tasks:
+    # Task name: User Gets Created
+    - name: User Gets Created
+
+      # Use the 'user' module to create a new user
+      user:
+        # Specify the username of the new user to be created
+        name: user1
+        # Specify the desired state of the user account (present indicates the user should exist)
+        state: present

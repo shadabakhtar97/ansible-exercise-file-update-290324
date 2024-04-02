@@ -1,0 +1,14 @@
+# Playbook: Append Data Inside File
+---
+- hosts: all
+  vars:
+    welcome_msg: 'Welcome to Anisble Playbooks'
+  tasks:
+    - name: append_to_file
+      # lineinfile` is used to insert a line into a file
+      lineinfile:
+        path: /home/remote/copy-tasks/info.txt
+        # `line` specifies the line to insert into the file, which is the value of the `welcome_msg` variable
+        line: "{{ welcome_msg }}"
+        # `insertafter` specifies where to insert the line. `EOF` means it will be inserted at the end of the file
+        insertafter: EOF

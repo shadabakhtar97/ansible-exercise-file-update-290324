@@ -1,0 +1,20 @@
+# Playbook: File Module for Change File or Directory Permission
+---
+- name: File Module Playbook
+  hosts: all
+  tasks:
+    - name: Set permissions of a file
+      file: 
+       path: /home/remote/file1.txt
+       mode: 0665
+      # register: This keyword is used in Ansible playbooks to store the result of a task in a variable
+      # ls_output: This is the name of the variable where the output of the command will be stored
+      register: ls_output
+
+    # Additional tasks can be added here if needed
+
+    # Example of using the registered output in a debug task
+    - name: Print ls_output
+      # debug: This is the name of the module being used
+      debug:
+        var: ls_output

@@ -7,9 +7,9 @@
       # The 'file' module is used to perform file-related tasks.
       file:
         # Specify the path of the directory to be created.
-        path: /home/remote/remote-dir5
+        path: /home/remote/copy-tasks/info.txt
         # Ensure that the directory exists. If it already exists, Ansible will not make any changes.
-        state: directory
+        state: present
       # The 'changed_when' directive specifies the condition under which Ansible considers the task to have made a change.
       changed_when: false
       # The 'register' directive allows you to store the result of the task in a variable.

@@ -1,0 +1,33 @@
+# Playbook: Installation of Apache-Tomcat
+
+# Define the playbook, which installs and manages Apache-Tomcat on a specific remote host
+---
+- name: Installation of Apache-Tomcat
+
+  # Specify the target hosts where Apache-Tomcat will be installed
+  hosts: webservers
+
+  # Enable privilege escalation to execute tasks with elevated privileges (e.g., sudo)
+  become: true
+
+  # Define the tasks to be executed on the specified hosts
+  tasks:
+    # Task name: Install httpd package
+    - name: Install httpd package
+
+      # Use the 'yum' module to install the httpd package (Apache HTTP Server)
+      yum:
+        # Specify the name of the package to be installed (httpd)
+        name: httpd
+        # Specify the desired state of the package (latest)
+        state: latest
+
+    # Task name: Start httpd Service
+    - name: Start httpd Service
+
+      # Use the 'service' module to manage the httpd service (Apache HTTP Server)
+      service:
+        # Specify the name of the service to be managed (httpd)
+        name: httpd
+        # Specify the desired state of the service (restarted)
+        state: restarted

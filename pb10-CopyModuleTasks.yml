@@ -1,0 +1,20 @@
+
+# Define the playbook, which consists of tasks to be executed on all hosts
+---
+- hosts: all
+
+  # Define variables specific to this playbook
+  vars:
+    # Define a variable 'welcome_msg' with the message to be copied to the remote file
+    welcome_msg: '<h1> Great! You hosted web application page..</h1>'
+
+  # Define the tasks to be executed on all hosts
+  tasks:
+    # Task name: copy_task
+    - name: copy_task
+      # Use the 'copy' module to copy content to a file on the remote host
+      copy:
+        # Specify the destination path for the file to be copied
+        dest: /home/remote/index.html
+        # Specify the content to be copied to the file, using the 'welcome_msg' variable
+        content: "{{ welcome_msg }}"

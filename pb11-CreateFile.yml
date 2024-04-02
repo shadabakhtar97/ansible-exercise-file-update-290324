@@ -1,0 +1,12 @@
+# Playbook: Create File
+---
+- hosts: all
+  tasks:
+    - name: create file
+      file:
+        path: /home/remote/info.txt
+        state: touch
+      register: results
+    - name: show results
+      debug:
+        var: results
