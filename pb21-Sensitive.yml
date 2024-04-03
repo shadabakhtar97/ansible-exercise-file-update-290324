@@ -1,0 +1,8 @@
+# Playbook: Ansible Vault for more than one password
+---
+- hosts: all
+  become: true
+  vars_files: /home/control/passwords.txt
+  tasks:
+    - ansible.builtin.debug:
+              msg: The value of the variable from passwords.txt file is {{  PASSWD5  }}

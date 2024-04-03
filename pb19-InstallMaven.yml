@@ -1,0 +1,33 @@
+# Playbook: Installation of Docker
+
+# Define the playbook, which installs and manages Docker on a specific remote host
+---
+- name: Installation of Maven
+
+  # Specify the target hosts where Docker will be installed
+  hosts: webservers
+
+  # Enable privilege escalation to execute tasks with elevated privileges (e.g., sudo)
+  become: true
+
+  # Define the tasks to be executed on the specified hosts
+  tasks:
+    # Task name: Install docker package
+    - name: Install maven package
+
+      # Use the 'yum' module to install the docker package
+      yum:
+        # Specify the name of the package to be installed (docker)
+        name: maven
+        # Specify the desired state of the package (latest)
+        state: latest
+
+    # Task name: Start docker Service
+    - name: Start git Service
+
+      # Use the 'service' module to manage the docker service
+      service:
+        # Specify the name of the service to be managed (docker)
+        name: maven
+        # Specify the desired state of the service (restarted)
+        state: restarted
